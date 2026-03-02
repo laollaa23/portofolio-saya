@@ -381,7 +381,7 @@ a {
 /* ── PORTFOLIO SECTION ───────────────────────── */
 .portfolio {
   padding: 100px 0;
-  background-color:radial-gradient(ellipse at 70% 10%, #1a3a5c 0%, #0a1535 40%, #050f20 100%);
+  background: 1a6fa8;
 }
 
 .portfolio__grid {
