@@ -345,7 +345,7 @@ a {
 /* ── SKILLS SECTION ─────────────────────────── */
 .skills {
   padding: 100px 0;
-  background-color: #ffffff;
+  background-color: #f8f9ff;
 }
 
 .skills__grid {
@@ -381,7 +381,7 @@ a {
 /* ── PORTFOLIO SECTION ───────────────────────── */
 .portfolio {
   padding: 100px 0;
-  ackground-color: #ffffff;
+  background-color: #f8f9ff;
 }
 
 .portfolio__grid {
