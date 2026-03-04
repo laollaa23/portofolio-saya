@@ -75,7 +75,7 @@ a {
 .btn-group {
   display: flex;
   gap: 12px;
-  align-items: center;
+  align-items: right;
 }
 
 .btn-primary {
