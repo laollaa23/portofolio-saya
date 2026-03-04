@@ -72,6 +72,15 @@ a {
   color: #6c63ff;
 }
 
+.btn-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: absolute;
+  top: 16px;    /* jarak dari atas */
+  right: 16px;   /* jarak dari kiri */
+}
+
 .btn-primary {
   background-color: #6c63ff;
   color: #ffffff !important;
@@ -85,6 +94,21 @@ a {
 
 .btn-primary:hover {
   background-color: #574fd6;
+}
+
+.btn-secondary {
+  background-color: #transparent 70%;
+  color: #ffffff !important;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background: #574fd6 !important;
 }
 
 /* ── HERO ───────────────────────────────────── */
