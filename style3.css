@@ -76,8 +76,6 @@ a {
   display: flex;
   gap: 12px;
   align-items: center;
-  top: 16px;    /* jarak dari atas */
-  right: 16px;   /* jarak dari kiri */
 }
 
 .btn-primary {
