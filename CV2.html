@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CV Olla Ramadhani - Sistem Informasi UMSU" />
+  <meta name="author" content="Olla Ramadhani" />
+  <title>CV — Olla Ramadhani</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --rose:       #e8748a;
+      --rose-light: #f4b8c5;
+      --rose-pale:  #fdeef2;
+      --cream:      #fdf8f5;
+      --ink:        #1c1520;
+      --ink-mid:    #4a3f47;
+      --ink-soft:   #8c7b87;
+      --gold:       #c49a6c;
+      --white:      #ffffff;
+      --shadow:     0 4px 32px rgba(180,80,100,.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 960px;
+      margin: 48px auto;
+      background: var(--white);
+      box-shadow: var(--shadow), 0 0 0 1px rgba(228,116,138,.08);
+      border-radius: 4px;
+      overflow: hidden;
+      animation: fadeUp .7s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 280px;
+      background: var(--ink);
+      padding: 52px 32px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100%;
+      position: relative;
+    }
+
+    /* Sidebar filler */
+    .sidebar-col { background: var(--ink); }
+    .main-col    { padding: 52px 48px 52px 56px; display: flex; flex-direction: column; gap: 36px; }
+
+    /* ── PHOTO ── */
+    .photo-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .photo-frame {
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      border: 3px solid var(--rose);
+      padding: 4px;
+      background: var(--ink);
+      position: relative;
+    }
+
+    .photo-frame img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3a2c35, #2a1f27);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      color: var(--rose-light);
+      letter-spacing: 1px;
+    }
+
+    /* ── NAME BLOCK ── */
+    .name-block { text-align: center; }
+
+    .name-block h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      letter-spacing: .4px;
+    }
+
+    .name-block .tagline {
+      font-size: .75rem;
+      font-weight: 300;
+      color: var(--rose-light);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ── SIDEBAR SECTION ── */
+    .s-section { display: flex; flex-direction: column; gap: 12px; }
+
+    .s-label {
+      font-size: .6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 500;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(228,116,138,.25);
+    }
+
+    .s-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .s-item .key {
+      font-size: .68rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .s-item .val {
+      font-size: .82rem;
+      color: rgba(255,255,255,.85);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* Skills bars */
+    .skill-bar-wrap { display: flex; flex-direction: column; gap: 10px; }
+
+    .skill-row { display: flex; flex-direction: column; gap: 4px; }
+
+    .skill-name { font-size: .78rem; color: rgba(255,255,255,.8); font-weight: 300; }
+
+    .bar-track {
+      height: 3px;
+      background: rgba(255,255,255,.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--rose), var(--rose-light));
+      border-radius: 2px;
+      animation: barGrow .9s ease both;
+      animation-delay: .4s;
+    }
+
+    @keyframes barGrow {
+      from { transform: scaleX(0); transform-origin: left; }
+      to   { transform: scaleX(1); transform-origin: left; }
+    }
+
+    /* Hobby pills */
+    .pill-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .pill {
+      font-size: .7rem;
+      background: rgba(228,116,138,.12);
+      color: var(--rose-light);
+      border: 1px solid rgba(228,116,138,.25);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-weight: 300;
+      letter-spacing: .3px;
+    }
+
+    /* ── MAIN COLUMN ── */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: .3px;
+    }
+
+    .section-head::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--rose-light), transparent);
+    }
+
+    /* About */
+    .about-text {
+      font-size: .88rem;
+      color: var(--ink-mid);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    .about-text strong { color: var(--rose); font-weight: 500; }
+
+    /* Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px; top: 6px; bottom: 6px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--rose-light), transparent);
+    }
+
+    .tl-item {
+      padding-left: 28px;
+      padding-bottom: 26px;
+      position: relative;
+      animation: fadeUp .5s ease both;
+    }
+
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-dot {
+      position: absolute;
+      left: 0; top: 5px;
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      border: 2px solid var(--rose);
+      background: var(--white);
+    }
+
+    .tl-period {
+      font-size: .68rem;
+      color: var(--rose);
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .tl-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .tl-sub {
+      font-size: .78rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+
+    .tl-desc {
+      font-size: .8rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Achievement tags */
+    .achv-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .achv-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--rose-light);
+      background: var(--rose-pale);
+      border-radius: 0 8px 8px 0;
+      font-size: .82rem;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .achv-icon {
+      font-size: 1rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* Tech chips */
+    .tech-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tech-chip {
+      font-size: .75rem;
+      background: var(--white);
+      border: 1px solid var(--rose-light);
+      color: var(--ink-mid);
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-weight: 400;
+      transition: background .2s, color .2s;
+    }
+
+    .tech-chip:hover {
+      background: var(--rose-pale);
+      color: var(--rose);
+    }
+
+    /* ── FOOTER BAND ── */
+    .footer-band {
+      grid-column: 1 / -1;
+      background: var(--rose-pale);
+      text-align: center;
+      padding: 18px;
+      font-size: .75rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      letter-spacing: .5px;
+      border-top: 1px solid var(--rose-light);
+    }
+
+    .footer-band strong { color: var(--rose); font-weight: 500; }
+
+    /* ── PRINT / RESPONSIVE ── */
+    @media print {
+      body { background: white; }
+      .page { margin: 0; box-shadow: none; border-radius: 0; animation: none; }
+    }
+
+    @media (max-width: 720px) {
+      .two-col { grid-template-columns: 1fr; }
+      .sidebar-col { min-height: unset; }
+      .sidebar { position: static; width: 100%; }
+      .main-col { padding: 36px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="two-col">
+
+    <!-- ══ SIDEBAR ══ -->
+    <div class="sidebar-col">
+      <aside class="sidebar">
+
+        <div class="photo-wrap">
+          <div class="photo-frame">
+            <!-- Jika foto tersedia, ganti placeholder dengan: <img src="profil.jpeg" alt="Olla Ramadhani"> -->
+            <div class="photo-placeholder">OR</div>
+          </div>
+        </div>
+
+        <div class="name-block">
+          <h1>Olla Ramadhani</h1>
+          <p class="tagline">Sistem Informasi · UMSU</p>
+        </div>
+
+        <!-- Data Pribadi -->
+        <div class="s-section">
+          <p class="s-label">Data Pribadi</p>
+          <div class="s-item">
+            <span class="key">Tanggal Lahir</span>
+            <span class="val">1 November 2005, Medan</span>
+          </div>
+          <div class="s-item">
+            <span class="key">Alamat</span>
+            <span class="val">Jl. P. Sinabang lk.VIII<br>Belawan Bahari, Medan</span>
+          </div>
+          <div class="s-item">
+            <span class="key">Agama</span>
+            <span class="val">Islam</span>
+          </div>
+          <div class="s-item">
+            <span class="key">Kewarganegaraan</span>
+            <span class="val">Indonesia</span>
+          </div>
+          <div class="s-item">
+            <span class="key">Status</span>
+            <span class="val">Belum Menikah</span>
+          </div>
+        </div>
+
+        <!-- Bahasa -->
+        <div class="s-section">
+          <p class="s-label">Bahasa</p>
+          <div class="skill-bar-wrap">
+            <div class="skill-row">
+              <span class="skill-name">Bahasa Indonesia</span>
+              <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-name">English</span>
+              <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hobi -->
+        <div class="s-section">
+          <p class="s-label">Hobi & Minat</p>
+          <div class="pill-list">
+            <span class="pill">Coding</span>
+            <span class="pill">Membaca</span>
+            <span class="pill">Memasak</span>
+            <span class="pill">Traveling</span>
+            <span class="pill">Film & Series</span>
+            <span class="pill">Menyanyi</span>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- ══ MAIN CONTENT ══ -->
+    <main class="main-col">
+
+      <!-- About -->
+      <section>
+        <div class="section-head"><h2>Tentang Saya</h2></div>
+        <p class="about-text">
+          Halo! Saya <strong>Olla Ramadhani</strong>, mahasiswi <strong>Sistem Informasi</strong> di Universitas Muhammadiyah Sumatera Utara (UMSU). Saya memiliki ketertarikan besar di bidang teknologi, khususnya <strong>web development</strong> dan <strong>artificial intelligence</strong>. Saya selalu bersemangat untuk terus belajar, mengembangkan keterampilan, dan berkontribusi melalui teknologi.
+        </p>
+      </section>
+
+      <!-- Pendidikan -->
+      <section>
+        <div class="section-head"><h2>Riwayat Pendidikan</h2></div>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-period">2024 — Sekarang</p>
+            <p class="tl-title">Universitas Muhammadiyah Sumatera Utara</p>
+            <p class="tl-sub">S1 Sistem Informasi</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-period">2020 — 2023</p>
+            <p class="tl-title">SMA Negeri 19 Medan</p>
+            <p class="tl-sub">Jurusan IPA</p>
+            <p class="tl-desc">Lulus dengan rata-rata nilai 9.10</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-period">2017 — 2020</p>
+            <p class="tl-title">MTsPN 4 Medan</p>
+            <p class="tl-desc">Lulus dengan rata-rata nilai 8.7</p>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-period">2011 — 2017</p>
+            <p class="tl-title">MIN 05 Medan</p>
+            <p class="tl-desc">Lulus dengan rata-rata nilai 8.2</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Keterampilan -->
+      <section>
+        <div class="section-head"><h2>Keterampilan</h2></div>
+        <div class="tech-grid">
+          <span class="tech-chip">HTML</span>
+          <span class="tech-chip">CSS</span>
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">Java</span>
+          <span class="tech-chip">MySQL</span>
+          <span class="tech-chip">Git</span>
+          <span class="tech-chip">VS Code</span>
+          <span class="tech-chip">Ms Word</span>
+          <span class="tech-chip">Ms PowerPoint</span>
+        </div>
+      </section>
+
+      <!-- Pencapaian -->
+      <section>
+        <div class="section-head"><h2>Pencapaian</h2></div>
+        <div class="achv-list">
+          <div class="achv-item">
+            <span class="achv-icon">🏆</span>
+            <span>Finalis Olimpiade Primagama 2018</span>
+          </div>
+          <div class="achv-item">
+            <span class="achv-icon">💻</span>
+            <span>Membuat aplikasi Java berbasis OOP sebagai proyek akademik</span>
+          </div>
+          <div class="achv-item">
+            <span class="achv-icon">🎤</span>
+            <span>Sertifikat Seminar Nasional <em>"The Power of Communication Skill — Build Up Your Confidence with Public Speaking"</em>, diselenggarakan oleh Indonesia Seminar bekerja sama dengan BEM se-Sumatera Utara</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ══ FOOTER ══ -->
+    <div class="footer-band">
+      &copy; 2026 <strong>Olla Ramadhani</strong> · Sistem Informasi, UMSU · All rights reserved
+    </div>
+
+  </div><!-- .two-col -->
+</div><!-- .page -->
+
+</body>
+</html>
